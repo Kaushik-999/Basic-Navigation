@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.kaushik.basicnavigation.fragments.MainFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_viewTransactionFragment"
+            app:destination="@id/viewTransactionFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_chooseReceiptFragment"
+            app:destination="@id/chooseReceiptFragment"/>
+        <action
+            android:id="@+id/action_mainFragment_to_viewBalanceFragment"
+            app:destination="@id/viewBalanceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewTransactionFragment"
+        android:name="com.kaushik.basicnavigation.fragments.ViewTransactionFragment"
+        android:label="Transaction"
+        tools:layout="@layout/fragment_view_transaction" />
+    <fragment
+        android:id="@+id/chooseReceiptFragment"
+        android:name="com.kaushik.basicnavigation.fragments.ChooseReceiptFragment"
+        android:label="Receipt"
+        tools:layout="@layout/fragment_choose_receipt" >
+        <action
+            android:id="@+id/action_chooseReceiptFragment_to_specifyAmountFragment"
+            app:destination="@id/specifyAmountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/specifyAmountFragment"
+        android:name="com.kaushik.basicnavigation.fragments.SpecifyAmountFragment"
+        android:label="Amount"
+        tools:layout="@layout/fragment_specify_amount" >
+        <action
+            android:id="@+id/action_specifyAmountFragment_to_confirmationFragment"
+            app:destination="@id/confirmationFragment" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_specifyAmountFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmationFragment"
+        android:name="com.kaushik.basicnavigation.fragments.ConfirmationFragment"
+        android:label="Confirmation"
+        tools:layout="@layout/fragment_confirmation">
+
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="amount"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_confirmationFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewBalanceFragment"
+        android:name="com.kaushik.basicnavigation.fragments.ViewBalanceFragment"
+        android:label="Balance"
+        tools:layout="@layout/fragment_view_balance" />
+</navigation>
